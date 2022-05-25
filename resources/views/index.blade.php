@@ -6,13 +6,12 @@
         <title>買い物リスト</title>
     </head>
     <body>
-        <h1>会員登録</h1>
-        <form action="./top.html" method="post">
-            名前:<input><br>
-            email：<input><br>
-            パスワード：<input type="password"><br>
-            パスワード(再度)：<input type="password"><br>
+        <h1>ログイン</h1>
+        <form action="/login" method="post">
+            email：<input name="email"><br>
+            パスワード：<input  name="password" type="password"><br>
             <button>ログインする</button>
         </form>
+        <a href>会員登録</a>
     </body>
 </html>
