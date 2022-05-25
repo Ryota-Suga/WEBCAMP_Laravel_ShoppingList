@@ -9,6 +9,15 @@
             @if (session('front.ShoppingList_register_success') == true)
                 「買うもの」を登録しました！！<br>
             @endif
+            @if (session('front.ShoppingList_delete_success') == true)
+                「買うもの」を削除しました！！<br>
+            @endif
+            @if (session('front.ShoppingList_completed_success') == true)
+                「買うもの」を完了にしました！！<br>
+            @endif
+            @if (session('front.ShoppingList_completed_failure') == true)
+                「買うもの」の完了に失敗しました....<br>
+            @endif
             @if ($errors->any())
                 <div>
                 @foreach ($errors->all() as $error)
@@ -31,9 +40,14 @@
         <tr>
             <td>{{ $task->getCreated_atDate() }}
             <td>{{ $task->name }}
-            <td><form action="./top.html"><button>完了</button></form></a>
+            <td><form action="{{ route('complete', ['shopping_list_id' => $task->id]) }}" method="post">
+                 @csrf
+                 <button onclick='return confirm("この「買うもの」を「完了」にします。よろしいですか？");' >完了</button></form>
             <td>　
-            <td><form action="./top.html"><button>削除</button></form></a>
+            <td><form action="{{ route('delete', ['shopping_list_id' => $task->id]) }}" method="post">
+                @csrf
+                @method("DELETE")
+                <button onclick='return confirm("この「買うもの」を「削除」します。よろしいですか？");'>削除</button></form></a>
         @endforeach
         </table>
         
