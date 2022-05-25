@@ -5,12 +5,22 @@
 
 {{-- メインコンテンツ --}}
 @section('contets')
-        <h1>「買うもの」の登録（未実装）</h1>
-            <form action="./top.html" method="post">
-                「買うもの」名:<input><br>
+        <h1>「買うもの」の登録</h1>
+            @if (session('front.ShoppingList_register_success') == true)
+                「買うもの」を登録しました！！<br>
+            @endif
+            @if ($errors->any())
+                <div>
+                @foreach ($errors->all() as $error)
+                    {{ $error }}<br>
+                @endforeach
+                </div>
+            @endif
+             <form action="/shopping_list/register" method="post">
+                @csrf
+                「買うもの」名: <input name="name" value="{{ old('name') }}"><br>
                 <button>「買うもの」を登録する</button>
             </form>
-
         <h1>「買うもの」の一覧（未実装）</h1>
         <a href>購入済み「買うもの」一覧（未実装）</a><br>
         <table border="1">

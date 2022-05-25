@@ -24,6 +24,7 @@ Route::post('/login', [AuthController::class, 'login']);
 // 認可処理
 Route::middleware(['auth'])->group(function () {
     Route::get('/shopping_list/list', [ShoppingListController::class, 'list']);
+    Route::post('/shopping_list/register', [ShoppingListController::class, 'register']);
     // ログアウト
     Route::get('/logout', [AuthController::class, 'logout']);
 });
