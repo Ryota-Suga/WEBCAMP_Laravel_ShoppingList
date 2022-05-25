@@ -27,11 +27,14 @@
         <tr>
             <th>登録日
             <th>「買うもの」名
+        @foreach ($list as $task)
         <tr>
-            <td>2022/01/01
-            <td>豚肉
+            <td>{{ $task->getCreated_atDate() }}
+            <td>{{ $task->name }}
             <td><form action="./top.html"><button>完了</button></form></a>
+            <td>　
             <td><form action="./top.html"><button>削除</button></form></a>
+        @endforeach
         </table>
         <!-- ページネーション -->
         現在 1 ページ目<br>

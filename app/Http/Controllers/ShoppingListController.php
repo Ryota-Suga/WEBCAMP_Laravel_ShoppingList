@@ -16,7 +16,17 @@ class ShoppingListController extends Controller
      */
     public function list()
     {
-        return view('shopping_list.list');
+        // 一覧の取得
+        $list = Shopping_listModel::where('user_id', Auth::id())
+                                  ->orderBy('name', 'ASC')
+                                  ->get();
+/*
+  $sql = Shopping_listModel::where('user_id', Auth::id())
+                           ->orderBy('name', 'DESC')
+                           ->toSql();
+//echo "<pre>\n"; var_dump($sql, $list); exit;
+*/
+        return view('shopping_list.list',['list' => $list]);
     }
     
     /**
