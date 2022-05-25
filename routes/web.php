@@ -17,6 +17,8 @@ use App\Http\Controllers\ShoppingListController;
 |
 */
 
-// タスク管理システム
+// 買い物リスト
 Route::get('/', [AuthController::class, 'index']);
+Route::post('/login', [AuthController::class, 'login']);
+
 Route::get('/shopping_list/list', [ShoppingListController::class, 'list']);
