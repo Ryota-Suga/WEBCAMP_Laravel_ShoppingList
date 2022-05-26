@@ -4,6 +4,7 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShoppingListController;
+use App\Http\Controllers\CompletedShoppingListController;
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
@@ -31,6 +32,8 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/delete/{shopping_list_id}', [ShoppingListController::class, 'delete'])->whereNumber('shopping_list_id')->name('delete');
         Route::post('/complete/{shopping_list_id}', [ShoppingListController::class, 'complete'])->whereNumber('shopping_list_id')->name('complete');
     });
+    // 購入済み「買うもの」一覧
+    Route::get('/completed_shopping_list/list', [CompletedShoppingListController::class, 'list']);
     // ログアウト
     Route::get('/logout', [AuthController::class, 'logout']);
 });
