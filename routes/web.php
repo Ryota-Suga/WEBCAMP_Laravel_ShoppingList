@@ -7,6 +7,7 @@ use App\Http\Controllers\ShoppingListController;
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +42,7 @@ Route::prefix('/admin')->group(function () {
     // 認可処理
     Route::middleware(['auth:admin'])->group(function () {
         Route::get('/top', [AdminHomeController::class, 'top'])->name('admin.top');
+        Route::get('/user/list', [AdminUserController::class, 'list'])->name('admin.user.list');
     });
     // ログアウト
     Route::get('/logout', [AdminAuthController::class, 'logout']);
